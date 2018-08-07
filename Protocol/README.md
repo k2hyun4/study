@@ -1,3 +1,15 @@
+## 프로토콜
+* 통신체계
+### 대표적 프로토콜 정의 기관
+* ISO, IEEE 등
+
+### SSH(Secure Shell)
+* 원격 로그인, 파일 전송 등에 사용되는 프로토콜 or 응용프로그램
+* 기본 포트 : 22번
+
+### puTTY
+* SSH, 텔넷 등을 위한 클라이언트
+
 ## TCP 3-way-handshake, 4-way-handshake
 ### 연결 성립(3-way-handshake)
 1. 클라이언트가 서버에 접속을 요청. SYN(a) 패킷 전송
