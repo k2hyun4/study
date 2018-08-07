@@ -1,18 +1,6 @@
 ### GIT?
 * 버전관리도구
 
-## 프로토콜
-* 통신체계
-### 대표적 프로토콜 정의 기관
-* ISO, IEEE 등
-
-### SSH(Secure Shell)
-* 원격 로그인, 파일 전송 등에 사용되는 프로토콜 or 응용프로그램
-* 기본 포트 : 22번
-
-### puTTY
-* SSH, 텔넷 등을 위한 클라이언트
-
 ## GIT - Local 편
 ### 0. GIT, SourceTree(GIT GUI Client) 설치
 * https://git-scm.com/
