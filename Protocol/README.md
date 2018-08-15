@@ -55,3 +55,8 @@
 
 ### Reference
 * https://d2.naver.com/helloworld/47667
+
+## TLS, SSL
+* Transport Layer Security
+* Secure Sockets Layer
+* 통신 과정에서 전송계층 종단간 보안과 데이터 무결성을 확보해줌
