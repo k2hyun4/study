@@ -1,4 +1,4 @@
-## Mysql Connection
+## Connection Error
 ### 1. MySQLNonTransientConnectionException 에러 발생
 
 * DriverManager.getConnection(url, id, pw)시에 NullPointerException..?
@@ -16,3 +16,9 @@
 ### 4. 에러 해결하기
 * url 정보에 time zone 정보를 추가
 * jdbc:mysql://{ip}/{db명}**?serverTimezone=UTC**
+
+## Function DETERMINISTIC ERROR(1418)
+* FUNCTION 생성 중 발생
+* show global variables like 'log_bin_trust_function_creators'; 확인
+* VALUE가 'OFF'일 경우 
+* SET GLOBAL LOG_BIN_TRUST_FUNCTION_CREATORS = 'ON';
