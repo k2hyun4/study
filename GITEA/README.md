@@ -13,6 +13,7 @@
 ## https 설정
 ### 인증서 받기
 * LetsEncrpyt-win-simple
+* https://github.com/k2hyun4/study/blob/master/LetsEncrypt/README.md
 
 ### setting
 ```
