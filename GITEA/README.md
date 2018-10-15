@@ -1,5 +1,3 @@
-# 작성중........
-
 ## gitea?
 * for window git 서버 구축
 * gitlab : linux용
