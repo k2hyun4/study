@@ -1,9 +1,30 @@
 # 작성중........
 
-## gitea 설치하기
+## gitea?
+* for window git 서버 구축
+* gitlab : linux용
 
-## 인증서 받기
-LetsEncrpyt-win-simple
+## gitea 설치하기
+* download : https://dl.gitea.io/gitea/
+* exe 실행 --> http://localhost:3000으로 접속(default값)
+* database : mysql은 오류가 발생하여,,, SQLite 활용
+* gitea.exe가 있는 폴더\custom\conf\app.ini 에서 설정 변경 가능
+
+* ref : http://juicyjusung.blogspot.com/2018/05/gitea.html
+
+## https 설정
+### 인증서 받기
+* LetsEncrpyt-win-simple
+
+### setting
+```
+ PROTOCOL = https
+ ROOT_URL = https://도메인
+ DISABLE_SSH = false
+ SSH_PORT = 22
+ CERT_FILE = crt.pem 경로
+ KEY_FILE = key.pem 경로
+```
 
 ## User 생성 및 권한 부여
 ### 1. User 생성
