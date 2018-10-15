@@ -188,3 +188,63 @@ keytool -importkeystore -deststorepass [password] -destkeypass [password] -destk
 ```
 keytool -import -trustcacerts -alias root -file [ca-crt.pem] -keystore [파일명].jks
 ```
+
+**ref**
+* http://www.kwangsiklee.com/2016/12/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B6%80%ED%8A%B8%EB%A1%9C-letsencrypt%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%AC%B4%EB%A3%8C-ssl-%EC%98%AC%EB%A6%AC%EA%B8%B0/
+
+### spring boot setting
+* application.yml
+```
+server:
+  ssl:
+    key-store: classpath:keystore/[keystore 파일명].jks
+    key-store-password: [password]
+    key-password: [password]
+  port: [https port]
+```
+
+### http redirect
+* ConnectorConfig.java
+* TomcatEmbeddedServletContainerFactory 대신 TomcatServletWebServerFactory 사용(in spring boot 2.x)
+* https://stackoverflow.com/questions/47700115/tomcatembeddedservletcontainerfactory-is-missing-in-spring-boot-2
+```
+import org.apache.catalina.Context;
+import org.apache.catalina.connector.Connector;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@EnableConfigurationProperties
+public class ConnectorConfig {
+	 @Bean
+	 public ServletWebServerFactory servletContainer() {
+		 TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
+			 @Override
+			 protected void postProcessContext(Context context) {
+				 SecurityConstraint securityConstraint = new SecurityConstraint();
+				 securityConstraint.setUserConstraint("CONFIDENTIAL");
+				 SecurityCollection collection = new SecurityCollection();
+				 collection.addPattern("/*");
+				 securityConstraint.addCollection(collection);
+				 context.addConstraint(securityConstraint);
+			 }
+		 };
+		 tomcat.addAdditionalTomcatConnectors(getHttpConnector());
+		 return tomcat;
+	 }
+ 
+	private Connector getHttpConnector() {
+		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+		connector.setScheme("http");
+		connector.setSecure(false);
+		connector.setPort([http port]);
+		connector.setRedirectPort([https port]);
+		return connector;
+	}
+}
+```
