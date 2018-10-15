@@ -163,3 +163,28 @@ jar {
 **3. Runnable Jar 실행**
 * cmd 활성화
 * java -jar [runnable 자바 경로 및 파일명]
+
+## https 적용시키기
+### LetsEncrypt-win-simple을 이용해 인증받기
+* https://github.com/k2hyun4/study/blob/master/LetsEncrypt/README.md
+
+### keystore 파일 생성
+
+**0. Why?**
+* 톰캣을 위해 jks 파일이 필요
+
+**1. 준비사항**
+* Letsencrypt-win-simple을 이용해 생성한 키 파일들
+* OpenSSL(https://www.openssl.org/source/)
+* keytool(in java)
+
+**2. 절차**
+```
+openssl pkcs12 -export -in [crt.pem] -inkey [key.pem] -out [파일명].p12 -name tomcat -CAfile [ca-crt.pem] -caname root
+```
+```
+keytool -importkeystore -deststorepass [password] -destkeypass [password] -destkeystore  [파일명].jks -srckeystore [방금 만든 p12파일] -srcstoretype PKCS12 -srcstorepass [password] -alias tomcat
+```
+```
+keytool -import -trustcacerts -alias root -file [ca-crt.pem] -keystore [파일명].jks
+```
