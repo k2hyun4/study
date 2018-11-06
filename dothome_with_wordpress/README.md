@@ -84,3 +84,43 @@ select 문 날려보기 성공하면 완료
 
 ### 5. 완료
 * 브라우저에서 localhost 로 접속하여 확인~
+
+
+## AutoSet Https 적용하기
+### 0. 사전작업
+* 포트 인바운드 설정, ssl 인증받아 crt.pem, key.pem 받기(ex: use letsencrypt)
+
+### 1. 매니저 설정
+* [설정] - [웹서버 세부 설정] - [웹서버 모듈 관리] : mod_ssl.so 체크 후 확인
+* [설정] - [PHP 세부 설정] - [PHP 확장모듈 관리] : php_openssl.ddl 체크 후 확인
+* [설정] - [웹서버 세부 설정] - [가상 호스트 설정] : 주도메인, 홈디렉토리, 관리자 메일 입력
+
+### 2. [AutoSetHome]\server\conf\httpd.conf 설정
+* 경로 : [AutoSetHome]\server\conf\httpd.conf
+* Listen [port] 밑에 Listen [ssl port] 추가
+
+### 3. httpd-vhosts.conf 설정
+* 경로 : [AutoSetHome]\server\conf\extra\httpd-vhosts.conf
+* 내용 추가
+```
+<VirtualHost *:[ssl port]>
+	ServerName domain.com
+	ServerAlias www.domain.com
+	ServerAdmin [관리자 메일]
+	DocumentRoot [port의 DocumentRoot와 동일하게]
+	ErrorLog logs/domain.com-error_log
+	CustomLog logs/domain.com-access_log common
+	<Directory />
+	Options FollowSymLinks
+	AllowOverride FileInfo
+	Require all granted
+	</Directory>
+	SSLEngine on
+	SSLCertificateFile [crt.pem 경로]
+	SSLCertificateKeyFile [key.pem 경로]
+	SSLProtocol all
+	SSLCipherSuite HIGH:MEDIUM
+</VirtualHost>
+```
+
+* ref : http://amina.co.kr/bbs/board.php?bo_table=tip&wr_id=3844
