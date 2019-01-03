@@ -20,3 +20,25 @@ model.addAttribute("name", value);
 ```
 <img th:attr="src=@{|${name}|}">
 ```
+## block, href 사용 이유, value in value
+### example
+* code
+```
+	<th:block th:with="id=${42774564}">
+		<a th:href="@{https://stackoverflow.com/questions/{value}(value=${id})}">Stack Overflow</a>
+	</th:block>
+```
+* result
+```
+  <a href="https://stackoverflow.com/questions/42774564">Stack Overflow</a>
+```
+### block
+* 동적생성 이후 사라짐
+* for thymeleaf 활용
+
+### th:href 사용 이유
+* 동적 href 생성을 위해
+
+### value in value
+* @{~~~ {value}(value=${~~})~~~}
+* 소괄호 부분이 없으면 value 적용이 되지 않은 채 "{value}" 라는 텍스트가 됨
