@@ -44,6 +44,8 @@ model.addAttribute("name", value);
 * 소괄호 부분이 없으면 value 적용이 되지 않은 채 "{value}" 라는 텍스트가 됨
 
 ## Useful Expression Utility
-* ${#execInfo.templateName}
-* ${#dates.createNow()}
-* ${#dates.createNowForTimeZone()}
+### ${#execInfo.templateName}
+### ${#dates.createNow()}
+### ${#numbers.formatDecimal(num, 표현최소자릿수, 천단위 표현방식, 소수점자릿수, 소수점 표현방식)}
+* 천단위, 소수점 표현방식 : 'POINT', 'COMMA', 'WHITESPACE', 'NONE'
+### ${#numbers.formatCurrency(num)}
