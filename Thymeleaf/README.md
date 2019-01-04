@@ -84,3 +84,11 @@ model.addAttribute("name", value);
 ### #aggregates
 * ${#aggregates.sum(array)}
 * ${#aggregates.avg(array)}
+
+## Replace & Fragment
+### Fragment
+* <head th:fragment="fragment영역명">~~</head>
+### Replace
+* <head th:replace="fragment파일명 :: fragment영역명"/>
+### Insert
+* <html th:insert="fragment파일명 :: fragment영역명"></html>
