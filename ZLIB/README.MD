@@ -1,4 +1,4 @@
-# ZLIB?
+# zlib?
 * https://ko.wikipedia.org/wiki/Zlib
 
 # decompression in java
