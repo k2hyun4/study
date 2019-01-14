@@ -1,15 +1,15 @@
-## STS 설치
+# STS 설치
 **1. 작성일 기준 최신 버전인 [STS 3.9.4.RELEASE] 다운로드**
 * https://spring.io/tools/sts/legacy.How+to+Download+and+Connect+with+STShow
 
 **2. 압축 해제 후 sts.exe 실행**
 
-## 프로젝트 생성
+# 프로젝트 생성
 **1. new -> Spring Starter Project**
 
 **2. Type : Gradle(BuildShip 2.x)**
 * 상단에 에러 발생시 Help-Eclipse Marketplace 에서 Buildship Gradle Integration 설치
-### Gradle 선택 이유
+## Gradle 선택 이유
 * Maven을 이용한 웹 프로젝트는 많이 생성해봤고, 
 * 아래 글에 혹해서!(지금 시점에서 Gradle을 사용하지 않을 이유는 '익숙함' 뿐인 것 같다.)
 * http://bkim.tistory.com/13
@@ -30,14 +30,14 @@
 * DataSource 설정없이 Run 해서 에러 발생
 * build.gradle -> dependencies 내 mybatis compile 주석 처리 후 Gradle -> Refresh Gradle Project, 다시 Run
 
-## 프로젝트 설정
-### application.yml 생성
+# 프로젝트 설정
+## application.yml 생성
 * src/main/resources 내 application.properties 삭제, application.yml 파일 생성
 * spring boot 의 기본 설정을 변경할 때 활용
 * spring boot에서 resource 하위의 .yml, .properties 파일을 읽어들임
 * 가독성 면에서 yml >> properties
 
-### thymeleaf 실시간 적용 설정
+## thymeleaf 실시간 적용 설정
 * resources/application.yml
 
 ```
@@ -45,7 +45,7 @@
     cache: false
 ```
 
-### Resource 폴더 생성
+## Resource 폴더 생성
 **1. resources**
 * 기본 설정 파일(application.yml, mybatis-config.xml 등)
 * index.html : 기본 url로 접근시 별도의 매핑이 없으면 index.html을 호출
@@ -60,8 +60,8 @@
 **4. resources/mapper**
 * Mybatis Mapper.xml 
 
-## 기본 구현
-### 컨트롤러
+# 기본 구현
+## 컨트롤러
 ```@Controller``` : 컨트롤러 클래스 명시
 
 ```@Log``` : Lombok 라이브러리에서 제공하는 Log 활용
@@ -70,17 +70,17 @@
 
 ```@GetMapping, @PostMapping``` : url mapping
 
-### VO
+## VO
 ```@Getter, @Setter``` 활용
 
-### DAO
+## DAO
 * Interface
 
 ```@Repository``` : 의존성 주입을 위해 필요
 
 ``` @Mapper``` : 매퍼 선언
 
-### db 세팅
+## db 세팅
 **1. mysql 접속정보**
 * resource/application.yml에 선언
 
@@ -134,7 +134,7 @@ mybatis:
 </mapper>
 ```
 
-## Runnable jar 생성하기
+# Runnable jar 생성하기
 * Spring boot에서는 war 대신 내장톰캣을 활용하는 Runnable jar 존재
 
 **1. build.gradle 설정**
@@ -164,11 +164,11 @@ jar {
 * cmd 활성화
 * java -jar [runnable 자바 경로 및 파일명]
 
-## https 적용시키기
-### LetsEncrypt-win-simple을 이용해 인증받기
+# https 적용시키기
+## LetsEncrypt-win-simple을 이용해 인증받기
 * https://github.com/k2hyun4/study/blob/master/LetsEncrypt/README.md
 
-### keystore 파일 생성
+## keystore 파일 생성
 
 **0. Why?**
 * 톰캣을 위해 jks 파일이 필요
@@ -192,7 +192,7 @@ keytool -import -trustcacerts -alias root -file [ca-crt.pem] -keystore [파일�
 **ref**
 * http://www.kwangsiklee.com/2016/12/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B6%80%ED%8A%B8%EB%A1%9C-letsencrypt%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EB%AC%B4%EB%A3%8C-ssl-%EC%98%AC%EB%A6%AC%EA%B8%B0/
 
-### spring boot setting
+## spring boot setting
 * application.yml
 ```
 server:
@@ -203,7 +203,7 @@ server:
   port: [https port]
 ```
 
-### http redirect
+## http redirect
 * ConnectorConfig.java
 * TomcatEmbeddedServletContainerFactory 대신 TomcatServletWebServerFactory 사용(in spring boot 2.x)
 * https://stackoverflow.com/questions/47700115/tomcatembeddedservletcontainerfactory-is-missing-in-spring-boot-2
@@ -248,3 +248,22 @@ public class ConnectorConfig {
 	}
 }
 ```
+
+# 임시 업로드 폴더 경로 지정해주기
+## 지정 이유
+* 에러 발생(The temporary upload location is not valid)
+## 원인
+* Tomcat에서 임시로 생성해주는 업로드 폴더는 한동안 사용하지 않으면 삭제되어 버림
+## 해결방안
+* 임시 업로드 폴더 경로를 지정해줌(불변하도록)
+* in application.yml
+```
+	spring: 
+	  servlet:
+	    multipart:
+	      location: [절대경로]
+```
+
+## ref
+* https://github.com/spring-projects/spring-boot/issues/9616
+* https://stackoverflow.com/questions/50523407/the-temporary-upload-location-tmp-tomcat-4296537502689403143-5000-work-tomcat
