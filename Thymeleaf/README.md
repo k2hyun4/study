@@ -24,13 +24,13 @@ model.addAttribute("name", value);
 ### example
 * code
 ```
-	<th:block th:with="id=${42774564}">
-		<a th:href="@{https://stackoverflow.com/questions/{value}(value=${id})}">Stack Overflow</a>
-	</th:block>
+<th:block th:with="id=${42774564}">
+	<a th:href="@{https://stackoverflow.com/questions/{value}(value=${id})}">Stack Overflow</a>
+</th:block>
 ```
 * result
 ```
-  <a href="https://stackoverflow.com/questions/42774564">Stack Overflow</a>
+<a href="https://stackoverflow.com/questions/42774564">Stack Overflow</a>
 ```
 ### block
 * 동적생성 이후 사라짐
@@ -86,9 +86,11 @@ model.addAttribute("name", value);
 * ${#aggregates.avg(array)}
 
 ## Replace & Fragment
-### Fragment
-* <head th:fragment="fragment영역명">~~</head>
-### Replace
-* <head th:replace="fragment파일명 :: fragment영역명"/>
-### Insert
-* <html th:insert="fragment파일명 :: fragment영역명"></html>
+```
+//Fragment
+<head th:fragment="fragment영역명">~~</head>
+//Replace
+<head th:replace="fragment파일명 :: fragment영역명"/>
+//Insert
+<html th:insert="fragment파일명 :: fragment영역명"></html>
+```
