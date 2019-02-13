@@ -90,7 +90,11 @@ model.addAttribute("name", value);
 //Fragment
 <head th:fragment="fragment영역명">~~</head>
 //Replace
-<head th:replace="fragment파일명 :: fragment영역명"/>
+<head th:replace="fragmentView경로 :: fragment영역명"/>
 //Insert
-<html th:insert="fragment파일명 :: fragment영역명"></html>
+<html th:insert="fragmentView경로 :: fragment영역명"></html>
 ```
+### 주의점
+* 이클립스에서 테스트 때는 정상 작동했는데, executable jar에서는 fragment를 못찾음
+* 원인 : fragmentView경로를 "/"로 시작(classpath:\templates 기준을 잡기 위해...)
+* 해결방안 : "/" 없이 시작하면 정상작동(상대경로로 적용되지 않고 잘 됨)
