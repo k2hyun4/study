@@ -2,5 +2,4 @@
 
 [Java의 정석](https://github.com/k2hyun4/study/blob/master/books/%EC%9E%90%EB%B0%94%EC%9D%98%20%EC%A0%95%EC%84%9D.md)
 
-[아는 만큼 보이는 데이터베이스 설계와 구축]
-(https://github.com/k2hyun4/study/blob/master/books/%EC%95%84%EB%8A%94%20%EB%A7%8C%ED%81%BC%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%84%A4%EA%B3%84%EC%99%80%20%EA%B5%AC%EC%B6%95.MD)
+[아는 만큼 보이는 데이터베이스 설계와 구축](https://github.com/k2hyun4/study/blob/master/books/%EC%95%84%EB%8A%94%20%EB%A7%8C%ED%81%BC%20%EB%B3%B4%EC%9D%B4%EB%8A%94%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%20%EC%84%A4%EA%B3%84%EC%99%80%20%EA%B5%AC%EC%B6%95.MD)
