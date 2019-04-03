@@ -115,3 +115,6 @@ Person person2 = constructor2.apply("홍길동");
 
 ## String.join()
 * String.join(", ", list)
+
+## Optional
+* 
