@@ -83,23 +83,23 @@ Person person2 = constructor2.apply("홍길동");
 ## 추가된 Collection Method
 * Iterable.forEach(Consumer)
 * Iterator.forEachRemaining(Consumer)
-* Collection.removeIf(Predicate)
+* **Collection.removeIf(Predicate)**
 * Collection.spliterator()
 * Collection.stream()
 * Collection.parallelStream()
 * List.sort(Comparator)
 * List.replaceAll(UnaryOperator)
 * Map.forEach(BiConsumer)
-* Map.replaceAll(BiFunction)
-* Map.putIfAbsent(K, V)
+* **Map.replaceAll(BiFunction)**
+* **Map.putIfAbsent(K, V)**
 * Map.remove(Object, Object)
 * Map.replace(K, V, V)
 * Map.replace(K, V)
 * Map.computeIfAbsent(K, Function)
-* Map.computeIfPresent(K, BiFunction)
+* **Map.computeIfPresent(K, BiFunction)**
 * Map.compute(K, BiFunction)
 * Map.merge(K, V, BiFunction)
-* Map.getOrDefault(Object, V)
+* **Map.getOrDefault(Object, V)**
 
 ## Stream
 ### 특징
@@ -110,8 +110,8 @@ Person person2 = constructor2.apply("홍길동");
 * ShortCircuit(중간 연산에서 false면 알아서 break)
 * 기본형에 특화된 객체 제공(IntStream 등)
 
-###
-
+### 단점
+* 성능 저하...
 
 ## String.join()
 * String.join(", ", list)
