@@ -117,4 +117,21 @@ Person person2 = constructor2.apply("홍길동");
 * String.join(", ", list)
 
 ## Optional
-* 
+* null 관련 처리를 해주는 클래스
+* chaining method 활용 가능
+### 예제
+```
+Optional.ofNullable(order)
+			.map(Order::getMember)
+			.map(Member::getAddress)
+			.map(Address::getCity)
+			.orElse("Seoul");
+```
+* map()을 통해 Optional 객체로 변환, 변환, 변환
+* orElse를 통해 default 처리
+```
+Optional.ofNullable(order)
+        .filter(o -> o.getDate().getTime() > System.currentTimeMillis()
+        .map(Order::getMember);
+```
+* filter()를 패스하지 못하면 optional을 지워버림
