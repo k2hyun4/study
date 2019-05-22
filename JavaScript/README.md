@@ -38,6 +38,10 @@ Math.floor(Array.prototype.indexOf.call(this.parentNode.childNodes, this) / 2);
 
 * ref : https://stackoverflow.com/questions/4649699/is-it-possible-to-get-elements-numerical-index-in-its-parent-node-without-loopi
 
+# insertBefore
+## [parentElement].insertBefore([newElement], [standardEelment]);
+* standardElement가 undefined라면, appendChild() 와 동일
+
 # 기억할 function들
 ## call, apply, bind
 ### call
