@@ -183,3 +183,11 @@ testArray[2] == testArray[3];	//true
 * "abc".repeat(3);	//"abcabcabc"
 * [0, 0, 0, 0].fill(100, 1, 3);		//[0, 100, 100, 0]	//end index - 1 까지만 적용됨
 * [1, 3, 5, 7, 9].findIndex(x => x == 3);		//1
+
+## 비구조화 할당(destructuring assignment)
+```
+const {scrollHeight, clientHeight} = this.box;
+
+const scrollHeight = this.box.scrollHeight;
+const clientHeight = this.box.clientHeight;
+```
