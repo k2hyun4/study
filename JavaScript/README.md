@@ -80,7 +80,19 @@ let b = 'bbbb';
 console.log('A : ' + a + ', B : ' + b);
 console.log(`A : ${a}, B : ${b});
 ```
-## Destructuring
+
+## Multi-line-String
+```
+//ES5
+var str = 'aaaaaaaa\n'
+	+ 'bbbbbbb';
+	
+//ES6
+var str = `aaaaaaa
+	bbbbbb`;
+```
+
+## 비구조화 할당(destructuring assignment)
 * de + structure + ing
 ```
 let [a, , b] = [1, 2, 3];
@@ -89,6 +101,12 @@ let [a, , b] = [1, 2, 3];
 let json = {'a' : 'aaaa', 'b' : 'bbbb'};
 let {a : newA, b : newB} = json;
 //newA = 'aaaa', newB = 'bbbb'
+
+//ex2
+const {scrollHeight, clientHeight} = this.box;
+
+const scrollHeight = this.box.scrollHeight;
+const clientHeight = this.box.clientHeight;
 ```
 
 ## class
@@ -104,6 +122,26 @@ class Sample {
 ```
 
 * 함수 추가, extends, overriding도 가능
+
+## Enhanced Object Literals
+* ...?
+* ref : [es2015features](https://github.com/gsfe/es2015features/tree/master/enhanced-object-literals)
+
+## Promises
+* 어렵쓰.. 중첩시 이점이 있다던데
+```
+//ES5
+setTimeout(function() {
+	console.log('hi');
+}, 1000);
+
+//ES6
+let wait1000 = new Promise((resolve, reject) => {
+	setTimeout(resolve, 1000)
+}).then(() => {
+	console.log('hi');
+});
+```
 
 ## Map & Set
 ```
@@ -183,11 +221,3 @@ testArray[2] == testArray[3];	//true
 * "abc".repeat(3);	//"abcabcabc"
 * [0, 0, 0, 0].fill(100, 1, 3);		//[0, 100, 100, 0]	//end index - 1 까지만 적용됨
 * [1, 3, 5, 7, 9].findIndex(x => x == 3);		//1
-
-## 비구조화 할당(destructuring assignment)
-```
-const {scrollHeight, clientHeight} = this.box;
-
-const scrollHeight = this.box.scrollHeight;
-const clientHeight = this.box.clientHeight;
-```
