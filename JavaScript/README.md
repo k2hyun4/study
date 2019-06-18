@@ -188,6 +188,7 @@ Math.max(...numArray);		//11
 
 ## Spread operator
 * ...뒤에 오는 배열 값을 복사
+* 배열 아니고 배열 값!
 ```
 function f(x, y, z) {
 	return x + y + z;
