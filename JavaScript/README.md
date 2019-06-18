@@ -186,12 +186,13 @@ Math.min(...numArray);		//1
 Math.max(...numArray);		//11
 ```
 
-## Spread
+## Spread operator
+* ...뒤에 오는 배열 값을 복사
+```
 function f(x, y, z) {
 	return x + y + z;
 }
 
-```
 //let result = f(1, 2, 3);
 let result = f(...[1, 2, 3]);
 //result = 6
