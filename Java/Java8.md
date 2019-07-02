@@ -135,3 +135,8 @@ Optional.ofNullable(order)
         .map(Order::getMember);
 ```
 * filter()를 패스하지 못하면 optional을 지워버림
+
+## LocalDateTime 시간 비교
+```
+long hours = ChronoUnit.HOURS.between(localDateTime1, localDateTime2);
+```
