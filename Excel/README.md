@@ -3,6 +3,7 @@
 2. ctrl + g
 3. alt + s
 4. k, enter
+5. 값 지정 후 ctrl + enter
 
 ## 연속 자동 채우기
 1. alt + e, i, s
