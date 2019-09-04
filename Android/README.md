@@ -24,3 +24,19 @@ webviewName.post(new Runnable() {
 	}
 });
 ```
+# Application 기본요소 4가지
+* Activity
+* Service
+* Broadcast Receiver
+* Content Provider
+
+# Android Task
+## 정의
+* Activity의 Stack인가...
+
+## 특징
+* First In Last Out
+* Root Activity : 런처에 의해 시작되는 Activity
+* Top Activity : 가장 마지막에 적재되어 현재 화면에 활성화 되어있는 Activity
+* 한 Task 안에 다른 Application의 Activity들이 함께 Stacked
+* 홈버튼 등에 의해 함께 background ↔ foreground 전환
