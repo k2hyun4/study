@@ -107,6 +107,15 @@ const {scrollHeight, clientHeight} = this.box;
 
 const scrollHeight = this.box.scrollHeight;
 const clientHeight = this.box.clientHeight;
+
+//ex3
+let x, y, rest;
+[x, y, rest] = [1, 2, 3, 4, 5];
+//rest = 3
+
+[x, y, ...rest] = [1, 2, 3, 4, 5];
+//rest = [3, 4, 5];
+//객체에도 적용됨
 ```
 
 ## class
